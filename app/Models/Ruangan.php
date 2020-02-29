@@ -9,5 +9,5 @@ class Ruangan extends Model
     protected $table = 'ruangans';
     protected $guarded = [];
     public $timestamps = false;
-
+    
 }

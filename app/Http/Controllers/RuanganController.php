@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ruanganStoreRequest;
 use App\Models\Ruangan;
 use Illuminate\Http\Request;
 
@@ -12,9 +13,17 @@ class RuanganController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        if($request->has('search')){
+            $search = $request->search;
+            $ruangans = Ruangan::where('nama', $request->$search)->paginate(10);
+        }else{
+            $ruangans = Ruangan::paginate(10);
+        }
+        $no=1;
+
+        return view('ruangan.index', compact('ruangans', 'no'));
     }
 
     /**
@@ -24,7 +33,7 @@ class RuanganController extends Controller
      */
     public function create()
     {
-        //
+        return view('ruangan.index');
     }
 
     /**
@@ -33,9 +42,12 @@ class RuanganController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ruanganStoreRequest $request)
     {
-        //
+        $validated = $request->validated();
+        Ruangan::create($validated);
+
+        return redirect('/ruangan');
     }
 
     /**
@@ -46,7 +58,8 @@ class RuanganController extends Controller
      */
     public function show(Ruangan $ruangan)
     {
-        //
+        $ruangan = Ruangan::findOrfail($ruangan)->first();
+        return view('ruangan.show', compact('ruangan'));
     }
 
     /**
@@ -57,7 +70,8 @@ class RuanganController extends Controller
      */
     public function edit(Ruangan $ruangan)
     {
-        //
+        $ruangan = Ruangan::findOrfail($ruangan)->first();
+        return view('ruangan.show', compact('ruangan'));
     }
 
     /**
@@ -67,9 +81,11 @@ class RuanganController extends Controller
      * @param  \App\Models\Ruangan  $ruangan
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Ruangan $ruangan)
+    public function update(ruanganStoreRequest $request, Ruangan $ruangan)
     {
-        //
+        $validated = $request->validated();
+        Ruangan::findOrfail($ruangan)->first()->update($validated);
+        return redirect('/ruangan');
     }
 
     /**
@@ -80,6 +96,7 @@ class RuanganController extends Controller
      */
     public function destroy(Ruangan $ruangan)
     {
-        //
+        Ruangan::findOrfail($ruangan)->first()->delete();
+        return redirect('/ruangan');
     }
 }
