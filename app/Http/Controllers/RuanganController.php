@@ -17,7 +17,7 @@ class RuanganController extends Controller
     {
         if($request->has('search')){
             $search = $request->search;
-            $ruangans = Ruangan::where('nama', $request->$search)->paginate(10);
+            $ruangans = Ruangan::where('nama', 'LIKE' , '%' . $search . '%')->paginate(10);
         }else{
             $ruangans = Ruangan::paginate(10);
         }
@@ -33,7 +33,7 @@ class RuanganController extends Controller
      */
     public function create()
     {
-        return view('ruangan.index');
+        return view('ruangan.create');
     }
 
     /**
