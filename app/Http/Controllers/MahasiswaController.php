@@ -75,7 +75,7 @@ class MahasiswaController extends Controller
      * @param  \App\Models\Mahasiswa  $mahasiswa
      * @return \Illuminate\Http\Response
      */
-    public function show(Mahasiswa $mahasiswa)
+    public function show($mahasiswa)
     {
         $mahasiswa = Mahasiswa::findOrFal($mahasiswa);
         return view('mahasiswa.show', compact('mahasiswa'));
@@ -87,7 +87,7 @@ class MahasiswaController extends Controller
      * @param  \App\Models\Mahasiswa  $mahasiswa
      * @return \Illuminate\Http\Response
      */
-    public function edit(Mahasiswa $mahasiswa)
+    public function edit($mahasiswa)
     {
         $mahasiswa = Mahasiswa::where('id',$mahasiswa->id)->first();
         $prodis = Prodi::all();
@@ -101,7 +101,7 @@ class MahasiswaController extends Controller
      * @param  \App\Models\Mahasiswa  $mahasiswa
      * @return \Illuminate\Http\Response
      */
-    public function update(mahasiswaStoreRequest $request, Mahasiswa $mahasiswa)
+    public function update(mahasiswaStoreRequest $request, $mahasiswa)
     {
         $validated = $request->validated();
         Mahasiswa::where('id', $mahasiswa->id)->first()->update($validated);
@@ -114,7 +114,7 @@ class MahasiswaController extends Controller
      * @param  \App\Models\Mahasiswa  $mahasiswa
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Mahasiswa $mahasiswa)
+    public function destroy($mahasiswa)
     {
         Mahasiswa::where('id',$mahasiswa->id)->first()->delete();
         return redirect('/mahasiswa');

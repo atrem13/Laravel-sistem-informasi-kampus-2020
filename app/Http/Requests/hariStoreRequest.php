@@ -33,7 +33,7 @@ class hariStoreRequest extends FormRequest
     public function messages()
     {
         return[
-            'name.required'=>'nama harus diisi',
+            'nama.required'=>'nama harus diisi',
             'nama.unique'=>'nama sudah ada'
         ];
     }

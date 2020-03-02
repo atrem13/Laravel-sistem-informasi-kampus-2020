@@ -12,9 +12,7 @@ class Dosen extends Model
     protected $guarded = [];
     public $timestamps = false;
 
-    // use Searchable;
-    // public function searchableAs()
-    // {
-    //     return 'nama';
-    // }
+    public function jadwalKuliahs(){
+        return $this->hasMany('App\Models\JadwalKuliah', 'id', 'hari_id');
+    }
 }
