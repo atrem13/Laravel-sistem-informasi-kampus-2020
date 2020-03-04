@@ -22,5 +22,8 @@ class JadwalKuliah extends Model
     public function dosen(){
         return $this->belongsTo('App\Models\Dosen', 'dosen_id', 'id');
     }
+    public function krsPilihan(){
+        return $this->hasMany('App\Models\KrsPilihan', 'id', 'jadwal_kuliah_id');
+    }
 }
 

@@ -18,25 +18,27 @@ class MahasiswaController extends Controller
     {
         if($request->has('search')){
             $search = $request->search;
-            $prodi = Prodi::where('nama', 'LIKE', '%' . $search . '%')->get();
-            // dd($prodi[0]->id);
-            // $mahasiswas = Mahasiswa::where('nama', 'LIKE', '%' . $search . '%')
-            //                         ->orWhere('nim', 'LIKE', '%' . $search . '%')
-            //                         ->orWhere('prodi_id', $prodi[0]->id)
-            //                         ->paginate(10);
-            // $searchText = 'test text';
-            $mahasiswas = Mahasiswa::with('Prodi')->where(function($query) use ($search)
-            {
-                $query->where('nim', 'LIKE', '%' . $search . '%')
-                      ->orWhere('nama', 'LIKE', '%' . $search . '%')
-                      ->orWhereHas('Prodi', function($q) use ($search) {
-                            $q->where(function($q) use ($search) {
-                                $q->where('nama', 'LIKE', '%' . $search . '%');
-                                // $q->orWhere('company_name', 'LIKE', '%' . $search . '%');
-                        });
-                    });
 
-            })->paginate(10);
+            // BEFORE
+            // $mahasiswas = mahasiswas::with('Prodi')->where(function($query) use ($search)
+            // {
+            //     $query->where('nim', 'LIKE', '%' . $search . '%')
+            //           ->orWhere('nama', 'LIKE', '%' . $search . '%')
+            //           ->orWhereHas('Prodi', function($q) use ($search) {
+            //                 $q->where(function($q) use ($search) {
+            //                     $q->where('nama', 'LIKE', '%' . $search . '%');
+            //             });
+            //         });
+
+            // })->paginate(10);
+
+            // AFTER
+            $closure = function ($query) use ($search) {
+                $query->where('nama', 'like', '%' . $search . '%');
+            };
+            $mahasiswas = Mahasiswa::where('nim', 'LIKE', '%' . $search . '%')
+                                            ->orWhere('nama', 'LIKE', '%' . $search . '%')
+                                            ->orWhereHas('Prodi', $closure)->paginate(10);
         }
         else{
             $mahasiswas = Mahasiswa::paginate(10);

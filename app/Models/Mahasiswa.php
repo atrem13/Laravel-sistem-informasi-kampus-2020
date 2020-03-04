@@ -12,13 +12,6 @@ class Mahasiswa extends Model
     protected $guarded = [];
     public $timestamps = false;
 
-    // use Searchable;
-    // public function searchableAs()
-    // {
-    //     return 'nama';
-    // }
-
-    // use Eloquence;
     public function prodi()
     {
         return $this->belongsTo("App\Models\Prodi", "prodi_id", "id");

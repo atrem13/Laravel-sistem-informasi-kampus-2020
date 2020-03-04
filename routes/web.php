@@ -24,5 +24,5 @@ Route::resource('prodi', 'ProdiController');
 Route::resource('matakuliah', 'MatakuliahController');
 Route::resource('ruangan', 'RuanganController');
 Route::resource('hari', 'HariController');
-Route::resource('JadwalKuliah', 'JadwalKuliahController');
+Route::resource('jadwal-kuliah', 'JadwalKuliahController');
 

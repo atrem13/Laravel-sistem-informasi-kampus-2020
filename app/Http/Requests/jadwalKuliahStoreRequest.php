@@ -28,6 +28,8 @@ class jadwalKuliahStoreRequest extends FormRequest
             'matakuliah_id'=>'required',
             'dosen_id'=>'required',
             'ruangan_id'=>'required',
+            'slot'=>'required',
+            'semester'=>'required',
             'waktu_mulai'=>'required',
             'waktu_selesai'=>'required'
         ];
@@ -40,7 +42,9 @@ class jadwalKuliahStoreRequest extends FormRequest
             'dosen_id.required'=>'dosen harus diisi',
             'ruangan.id_required'=>'ruangan harus diisi',
             'waktu_mulai.required'=>'waktu mulai harus diisi',
-            'waktu_selesai.required'=>'waktu selesai harus diisi'
+            'waktu_selesai.required'=>'waktu selesai harus diisi',
+            'slot.required'=>'slot harus diisi',
+            'semester.required'=>'semester harus diisi'
         ];
     }
 }

@@ -5,10 +5,10 @@
 @section('content')
     <div class="row">
         <div class="col-sm-6">
-            <a href="{{route('JadwalKuliah.create')}}" class="btn btn-primary">Add</a>
+            <a href="{{route('jadwal-kuliah.create')}}" class="btn btn-primary">Add</a>
         </div>
         <div class="col-sm-3 offset-3">
-            <form action="{{route('JadwalKuliah.index')}}" class="form-inline" method="get">
+            <form action="{{route('jadwal-kuliah.index')}}" class="form-inline" method="get">
                 <input type="text" name="search" class="form-control">
                 <button type="submit" class="btn btn-primary">Cari</button>
             </form>
@@ -22,6 +22,8 @@
                 <th>Matakuliah</th>
                 <th>Dosen Pengajar</th>
                 <th>Ruangan</th>
+                <th>Semester</th>
+                <th>Slot</th>
                 <th>Jam</th>
                 <th>Action</th>
             </tr>
@@ -34,10 +36,12 @@
                     <td>{{$jadwalKuliah->matakuliah->nama}}</td>
                     <td>{{$jadwalKuliah->dosen->nama}}</td>
                     <td>{{$jadwalKuliah->ruangan->nama}}</td>
+                    <td>{{$jadwalKuliah->semester}}</td>
+                    <td>{{$jadwalKuliah->slot}}</td>
                     <td>{{$jadwalKuliah->waktu_mulai}} - {{$jadwalKuliah->waktu_selesai}}</td>
                     <td>
-                        <a href="{{route('JadwalKuliah.edit', $jadwalKuliah->id)}}" class="btn btn-success btn-sm">edit</a>
-                        <form action="{{route('JadwalKuliah.destroy', $jadwalKuliah->id)}}" style="display:inline " method="POST">
+                        <a href="{{route('jadwal-kuliah.edit', $jadwalKuliah->id)}}" class="btn btn-success btn-sm">edit</a>
+                        <form action="{{route('jadwal-kuliah.destroy', $jadwalKuliah->id)}}" style="display:inline " method="POST">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger btn-sm">delete</button>

@@ -19,8 +19,42 @@ class JadwalKuliahController extends Controller
      */
     public function index(Request $request)
     {
+        if($request->has('search')){
+            $search = $request->search;
+            // BEFORE
+            // $jadwalKuliahs = JadwalKuliah::where('waktu_mulai', 'LIKE', '%' . $search . '%')
+            //                                ->orWhere('waktu_selesai', 'LIKE', '%' . $search . '%')
+            //                                ->orWhereHas('Dosen', function($q) use($search){
+            //                                     $q->where('nama', 'LIKE', '%' . $search . '%');
+            //                                 })
+            //                                ->orWhereHas('Hari', function($q) use($search){
+            //                                    $q->where('nama', 'LIKE', '%' . $search . '%');
+            //                                })
+            //                                ->orWhereHas('Matakuliah', function($q) use($search){
+            //                                    $q->where('nama', 'LIKE', '%' . $search . '%');
+            //                                })
+            //                                ->orWhereHas('Ruangan', function($q) use($search){
+            //                                    $q->where('nama', 'LIKE', '%' . $search . '%');
+            //                                })->paginate();
+
+            // AFTER
+            $closure = function ($query) use ($search) {
+                $query->where('nama', 'like', '%' . $search . '%');
+            };
+            $jadwalKuliahs = JadwalKuliah::where('waktu_mulai', 'LIKE', '%' . $search . '%')
+                                            ->orWhere('waktu_selesai', 'LIKE', '%' . $search . '%')
+                                            ->orWhere('semester',  'LIKE', '%' . $search . '%')
+                                            ->orWhere('slot', 'LIKE', '%' . $search . '%')
+                                            ->orWhereHas('Dosen', $closure)
+                                            ->orWhereHas('Hari', $closure)
+                                            ->orWhereHas('Ruangan', $closure)
+                                            ->orWhereHas('Matakuliah', $closure)->paginate(10);
+            // dd($jadwalKuliahs);
+
+        }else{
+            $jadwalKuliahs = JadwalKuliah::paginate(10);
+        }
         $no = 1;
-        $jadwalKuliahs = JadwalKuliah::paginate(10);
         return view('jadwalKuliah.index', compact('jadwalKuliahs', 'no'));
     }
 

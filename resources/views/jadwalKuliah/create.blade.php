@@ -10,8 +10,8 @@
             @endforeach
         </ul>
     @endif
-    <a href="{{route('JadwalKuliah.index')}}" class="btn btn-secondary">back</a>
-    <form action="{{route('JadwalKuliah.store')}}" method="post">
+    <a href="{{route('jadwal-kuliah.index')}}" class="btn btn-secondary">back</a>
+    <form action="{{route('jadwal-kuliah.store')}}" method="post">
         @csrf
         <div class="form-group">
             <label for="">Hari</label>
@@ -48,6 +48,14 @@
                     <option value="{{$ruangan->id}}">{{$ruangan->nama}}</option>
                 @endforeach
             </select>
+        </div>
+        <div class="form-group">
+            <label for="">Semester</label>
+            <input type="number" class="form-control" name="semester">
+        </div>
+        <div class="form-group">
+            <label for="">Slot</label>
+            <input type="number" class="form-control" name="slot">
         </div>
         <div class="form-group">
             <label for="">Waktu Mulai</label>
