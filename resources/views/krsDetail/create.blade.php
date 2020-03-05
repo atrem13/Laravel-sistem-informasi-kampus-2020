@@ -7,6 +7,12 @@
         <div class="col-sm-6">
             <a href="{{route('krs.index')}}" class="btn btn-secondary">back</a>
         </div>
+        <div class="col-sm-3 offset-3">
+            <form action="{{route('krs-detail.create', $krs_id)}}" class="form-inline" method="get">
+                <input type="text" name="search" class="form-control">
+                <button type="submit" class="btn btn-primary">cari</button>
+            </form>
+        </div>
     </div>
     @if(!$krsDetails->isEmpty())
     <table class="table-striped table mb-5">
@@ -48,6 +54,16 @@
         </tbody>
     </table>
     @endif
+    <br>
+    <br>
+    <div class="row">
+        <div class="col-sm-3 offset-9">
+            <form action="{{route('krs-detail.create', $krs_id)}}" class="form-inline" method="get">
+                <input type="text" name="search2" class="form-control">
+                <button type="submit" class="btn btn-primary">cari</button>
+            </form>
+        </div>
+    </div>
     <table class="table-striped table">
         <thead>
             <tr>

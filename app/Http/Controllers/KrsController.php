@@ -14,9 +14,19 @@ class KrsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $krss = Krs::paginate(10);
+        if($request->has('search')){
+            $search = $request->search;
+            $closure = function ($query) use ($search) {
+                $query->where('nama', 'like', '%' . $search . '%');
+            };
+            $krss = Krs::where('semester', 'LIKE', '%'.$search.'%')
+                        ->orWhereHas('Mahasiswa', $closure)
+                        ->paginate(10);
+        }else{
+            $krss = Krs::paginate(10);
+        }
         $no=1;
         $status = [
             ['status'=>'0', 'nama'=>'belum approve'],
