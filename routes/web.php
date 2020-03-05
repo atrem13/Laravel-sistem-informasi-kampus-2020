@@ -25,4 +25,11 @@ Route::resource('matakuliah', 'MatakuliahController');
 Route::resource('ruangan', 'RuanganController');
 Route::resource('hari', 'HariController');
 Route::resource('jadwal-kuliah', 'JadwalKuliahController');
+Route::resource('krs', 'KrsController');
+Route::group(['prefix' => 'krs-detail'], function() {
+    Route::get('/{id}', 'KrsDetailController@create')->name('krs-detail.create');
+    Route::post('/store', 'KrsDetailController@store')->name('krs-detail.store');
+    Route::delete('/cancel/{id}', 'KrsDetailController@cancel')->name('krs-detail.cancel');
+});
+
 

@@ -16,4 +16,8 @@ class Mahasiswa extends Model
     {
         return $this->belongsTo("App\Models\Prodi", "prodi_id", "id");
     }
+    public function krss()
+    {
+        return $this->hasMany("App\Models\Krs", "mahasiswa_id", "id");
+    }
 }

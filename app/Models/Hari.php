@@ -11,6 +11,6 @@ class Hari extends Model
     public $timestamps = false;
 
     public function jadwalKuliahs(){
-        return $this->hasMany('App\Models\JadwalKuliah', 'id', 'hari_id');
+        return $this->hasMany('App\Models\JadwalKuliah', 'hari_id', 'id');
     }
 }

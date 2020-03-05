@@ -18,6 +18,6 @@ class Prodi extends Model
 
     public function mahasiswas()
     {
-        return $this->hasMany("App\Models\Mahasiswa", "id", "prodi_id");
+        return $this->hasMany("App\Models\Mahasiswa", "prodi_id", "id");
     }
 }
