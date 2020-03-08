@@ -4,9 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class KrsDetail extends Model
+class Khs extends Model
 {
-    protected $table = "krs_details";
+    protected $table = 'khs';
     protected $guarded = [];
     public $timestamps = false;
 
@@ -15,13 +15,9 @@ class KrsDetail extends Model
         return $this->belongsTo('App\Models\Krs', 'krs_id', 'id');
     }
 
-    public function jadwalKuliah()
-    {
-        return $this->belongsTo('App\Models\JadwalKuliah','jadwal_kuliah_id', 'id');
-    }
-
     public function khsDetails()
     {
-        return $this->hasMany('App\Models\KhsDetail', 'krs_detail_id', 'id');
+        return $this->hasMany('App\Models\KhsDetail', 'khs_id', 'id');
     }
+
 }

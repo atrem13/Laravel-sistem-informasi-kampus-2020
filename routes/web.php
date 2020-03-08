@@ -32,4 +32,13 @@ Route::group(['prefix' => 'krs-detail'], function() {
     Route::delete('/cancel/{id}', 'KrsDetailController@cancel')->name('krs-detail.cancel');
 });
 
+Route::group(['prefix' => 'khs'], function() {
+    Route::get('/', 'KhsController@index')->name('khs.index');
+    Route::get('/create','KhsController@create')->name('khs.create');
+    Route::post('/store', 'KhsController@store')->name('khs.store');
+    Route::get('/show-detail/{id}', 'KhsController@showDetail')->name('khs.showDetail');
+    Route::put('/update-detail/{id}', 'KhsController@updateDetail')->name('khs.updateDetail');
+    Route::delete('/destroy/{id}', 'KhsController@destroy')->name('khs.destroy');
+});
+
 

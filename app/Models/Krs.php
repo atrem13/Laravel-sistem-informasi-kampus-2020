@@ -20,4 +20,9 @@ class Krs extends Model
     {
         return $this->hasMany('App\Models\KrsDetail', 'krs_id', 'id');
     }
+
+    public function khs()
+    {
+        return $this->hasOne('App\Models\Khs', 'krs_id', 'id');
+    }
 }

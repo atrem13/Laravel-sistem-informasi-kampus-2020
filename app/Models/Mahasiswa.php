@@ -20,4 +20,5 @@ class Mahasiswa extends Model
     {
         return $this->hasMany("App\Models\Krs", "mahasiswa_id", "id");
     }
+
 }
