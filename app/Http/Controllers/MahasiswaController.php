@@ -38,10 +38,10 @@ class MahasiswaController extends Controller
             };
             $mahasiswas = Mahasiswa::where('nim', 'LIKE', '%' . $search . '%')
                                             ->orWhere('nama', 'LIKE', '%' . $search . '%')
-                                            ->orWhereHas('Prodi', $closure)->paginate(10);
+                                            ->orWhereHas('Prodi', $closure)->paginate(5);
         }
         else{
-            $mahasiswas = Mahasiswa::paginate(10);
+            $mahasiswas = Mahasiswa::paginate(5);
         }
         $no=1;
         return view('mahasiswa.index', compact('mahasiswas', 'no'));

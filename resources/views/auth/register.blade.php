@@ -12,12 +12,30 @@
                         @csrf
 
                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+                            <label for="hak_akses_id" class="col-md-4 col-form-label text-md-right">{{ __('Daftar Sebagai') }}</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                <select name="hak_akses_id" id="hak_akses_id" class="form-control @error('hak_akses_id') is-invalid @enderror" value="{{old('hak_akses_id')}}" required autocomplete="hak_akses_id" autofocus>
+                                    <option value="">-pilih-</option>
+                                    @foreach ($hakAksess as $hakAkses)
+                                        <option value="{{$hakAkses->id}}">{{$hakAkses->nama}}</option>
+                                    @endforeach
+                                </select>
 
-                                @error('name')
+                                @error('hak_akses_id')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="username" class="col-md-4 col-form-label text-md-right">{{ __('Username') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="username" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="username" autofocus>
+
+                                @error('username')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

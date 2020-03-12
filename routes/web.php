@@ -11,9 +11,13 @@
 |
 */
 
+Route::get('/template', function () {
+    return view('layout.template');
+})->name('testOI');
 Route::get('/', function () {
     return view('welcome');
 });
+
 
 Auth::routes();
 
@@ -42,3 +46,7 @@ Route::group(['prefix' => 'khs'], function() {
 });
 
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
