@@ -48,11 +48,11 @@ class JadwalKuliahController extends Controller
                                             ->orWhereHas('Dosen', $closure)
                                             ->orWhereHas('Hari', $closure)
                                             ->orWhereHas('Ruangan', $closure)
-                                            ->orWhereHas('Matakuliah', $closure)->paginate(10);
+                                            ->orWhereHas('Matakuliah', $closure)->paginate(5);
             // dd($jadwalKuliahs);
 
         }else{
-            $jadwalKuliahs = JadwalKuliah::paginate(10);
+            $jadwalKuliahs = JadwalKuliah::paginate(5);
         }
         $no = 1;
         return view('jadwalKuliah.index', compact('jadwalKuliahs', 'no'));

@@ -88,19 +88,19 @@
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
+    @php
+        $action = Route::currentRouteName();
+        $action = explode('.', $action);
+    @endphp
     <div class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">{{Route::current()->uri}}</h1>
+            <h1 class="m-0 text-dark">{{$action[0]}}</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-                @php
-                  $action = Route::currentRouteName();
-                  $action = explode('.', $action);
 
-                @endphp
               <li class="breadcrumb-item"><a href="#">{{$action[0]}}</a></li>
               <li class="breadcrumb-item">{{$action[1]}}</li>
             </ol>
@@ -130,9 +130,9 @@
                     </div>
                   </div>
                 </div>  --}}
-                @yield('header')
+                @yield('header', {{$action}})
                 <!-- /.card-header -->
-                <div class="card-body table-responsive p-0" style="height: 300px;">
+                <div class="card-body table-responsive p-0" style="height: 328px;">
                   {{--  <table class="table table-head-fixed text-nowrap">
                     <thead>
                       <tr>
@@ -161,6 +161,19 @@
                         @yield('link')
                     </div>
                 </div>
+                @if ($action[0] == 'krs-detail' && $action[1] == 'create')
+                  @yield('header2')
+                  <!-- /.card-header -->
+                  <div class="card-body table-responsive p-0" style="height: 328px;">
+                  @yield('table2')
+                  </div>
+                  <!-- /.card-body -->
+                  <div class="card-footer clearfix ">
+                      <div class="float-right">
+                          @yield('link')
+                      </div>
+                  </div>
+                @endif
               </div>
               <!-- /.card -->
             </div>

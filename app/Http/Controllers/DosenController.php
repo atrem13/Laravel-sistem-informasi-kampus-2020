@@ -21,10 +21,10 @@ class DosenController extends Controller
                             ->orWhere('nidn', 'LIKE', '%' . $search . '%')
                             ->orWhere('notelp', 'LIKE', '%' . $search . '%')
                             ->orWhere('alamat', 'LIKE', '%' . $search . '%')
-                            ->paginate(10);
+                            ->paginate(5);
 
         }else{
-            $dosens = Dosen::paginate(10);
+            $dosens = Dosen::paginate(5);
         }
         $no = 1;
         return view('dosen.index', compact('dosens','no'));

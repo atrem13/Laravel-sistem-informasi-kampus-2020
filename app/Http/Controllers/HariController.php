@@ -17,9 +17,9 @@ class HariController extends Controller
     {
         if($request->has('search')){
             $search = $request->search;
-            $haris = hari::where('nama', 'LIKE' , '%' . $search . '%')->paginate(10);
+            $haris = hari::where('nama', 'LIKE' , '%' . $search . '%')->paginate(5);
         }else{
-            $haris = hari::paginate(10);
+            $haris = hari::paginate(5);
         }
         $no=1;
 

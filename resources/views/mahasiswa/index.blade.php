@@ -1,15 +1,15 @@
 @extends('layout.template')
 @section('header')
 <div class="card-header">
-    <h3 class="card-title">Mahasiswa Table</h3>
+    <h3 class="card-title">{{Route::current()->uri}} Table</h3>
     <div class="card-tools">
         <form action="{{route('mahasiswa.index')}}" class="form-inline" method="get">
             <a href="{{route('mahasiswa.create')}}" class="btn btn-primary btn-sm mr-3"><i class="fa fa-plus"></i></a>
             <div class="input-group input-group-sm" style="width: 150px;">
-                    <input type="text" name="search" class="form-control float-right" placeholder="search">
-                    <div class="input-group-append">
-                        <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
-                    </div>
+                <input type="text" name="search" class="form-control float-right" placeholder="search">
+                <div class="input-group-append">
+                    <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
+                </div>
             </div>
         </form>
     </div>

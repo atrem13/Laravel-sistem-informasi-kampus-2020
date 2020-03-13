@@ -19,10 +19,10 @@ class MatakuliahController extends Controller
             $search = $request->search;
             $matakuliahs = Matakuliah::where('kode', 'LIKE', '%' . $search . '%')
                                      ->orWhere('nama', 'LIKE', '%' . $search . '%')
-                                     ->paginate(10);
+                                     ->paginate(5);
             // dd($matakuliahs);
         }else{
-            $matakuliahs = Matakuliah::paginate(10);
+            $matakuliahs = Matakuliah::paginate(5);
         }
         $no = 1;
         return view('matakuliah.index', compact('matakuliahs', 'no'));

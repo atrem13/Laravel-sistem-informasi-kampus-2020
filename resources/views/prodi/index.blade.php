@@ -1,21 +1,22 @@
-@extends('layout.layout')
-@section('title')
-    index prodi
-@endsection
-@section('content')
-    <div class="row">
-        <div class="col-sm-6">
-            <a href="{{route('prodi.create')}}" class="btn btn-primary">add</a>
-        </div>
-        <div class="col-sm-3 offset-3">
-            <form action="{{route('prodi.index')}}" method="get" class="form-inline">
-                <input type="text" name="search" class="form-control">
-                <button type="submit" class="btn btn-primary">Cari</button>
-            </form>
-        </div>
+@extends('layout.template')
+@section('header')
+<div class="card-header">
+    <h3 class="card-title">{{Route::current()->uri}} Table</h3>
+    <div class="card-tools">
+        <form action="{{route('prodi.index')}}" class="form-inline" method="get">
+            <a href="{{route('prodi.create')}}" class="btn btn-primary btn-sm mr-3"><i class="fa fa-plus"></i></a>
+            <div class="input-group input-group-sm" style="width: 150px;">
+                    <input type="text" name="search" class="form-control float-right" placeholder="search">
+                    <div class="input-group-append">
+                        <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
+                    </div>
+            </div>
+        </form>
     </div>
-    {{-- {{dd($prodis)}} --}}
-    <table class="table table-striped">
+</div>
+@endsection
+@section('table')
+    <table class="table table-head-fixed text-nowrap">
         <thead>
             <tr>
                 <th>No</th>
@@ -45,6 +46,8 @@
             @endif
         </tbody>
     </table>
+@endsection
+@section('link')
     {{$prodis->links()}}
 @endsection
 

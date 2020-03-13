@@ -17,9 +17,9 @@ class ProdiController extends Controller
     {
         if($request->has('search')){
             $search = $request->search;
-            $prodis = Prodi::where('nama', 'LIKE', '%' . $search . '%')->paginate(10);
+            $prodis = Prodi::where('nama', 'LIKE', '%' . $search . '%')->paginate(5);
     	}else{
-    		$prodis = Prodi::paginate(10);
+    		$prodis = Prodi::paginate(5);
         }
         $no=1;
         return view('prodi.index',compact('prodis', 'no'));
