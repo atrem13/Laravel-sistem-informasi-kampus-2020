@@ -1,7 +1,7 @@
 @extends('layout.template')
 @section('header')
 <div class="card-header">
-    <h3 class="card-title">{{Route::current()->uri}} Table</h3>
+    <p class="card-title">{{Route::current()->uri}} Table</p>
     <div class="card-tools">
         <form action="{{route('hari.index')}}" class="form-inline" method="get">
             <a href="{{route('hari.create')}}" class="btn btn-primary btn-sm mr-3"><i class="fa fa-plus"></i></a>

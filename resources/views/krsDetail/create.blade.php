@@ -1,10 +1,9 @@
 @extends('layout.template')
 @section('header')
 <div class="card-header">
-    <h3 class="card-title">{{Route::current()->uri}} Table</h3>
+    <p class="card-title">Data KRS</p>
     <div class="card-tools">
         <form action="{{route('krs-detail.create', $krs_id)}}" class="form-inline" method="get">
-            <a href="{{route('krs.create')}}" class="btn btn-primary btn-sm mr-3"><i class="fa fa-left-arrow"></i></a>
             <div class="input-group input-group-sm" style="width: 150px;">
                     <input type="text" name="search" class="form-control float-right" placeholder="search">
                     <div class="input-group-append">
@@ -62,10 +61,9 @@
 
 @section('header2')
 <div class="card-header">
-    <h3 class="card-title">{{Route::current()->uri}} Table</h3>
+    <h3 class="card-title">Pilihan KRS</h3>
     <div class="card-tools">
         <form action="{{route('krs-detail.create', $krs_id)}}" class="form-inline" method="get">
-            <a href="{{route('krs.create')}}" class="btn btn-primary btn-sm mr-3"><i class="fa fa-left-arrow"></i></a>
             <div class="input-group input-group-sm" style="width: 150px;">
                     <input type="text" name="search2" class="form-control float-right" placeholder="search">
                     <div class="input-group-append">
