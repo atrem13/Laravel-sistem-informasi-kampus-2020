@@ -91,7 +91,7 @@ class MahasiswaController extends Controller
      */
     public function edit($mahasiswa)
     {
-        $mahasiswa = Mahasiswa::where('id',$mahasiswa->id)->first();
+        $mahasiswa = Mahasiswa::where('id',$mahasiswa)->first();
         $prodis = Prodi::all();
         return view('mahasiswa.edit', compact('mahasiswa', 'prodis'));
     }

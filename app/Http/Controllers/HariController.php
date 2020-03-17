@@ -71,7 +71,7 @@ class HariController extends Controller
     public function edit(Hari $hari)
     {
         $hari = hari::findOrfail($hari)->first();
-        return view('hari.show', compact('hari'));
+        return view('hari.edit', compact('hari'));
     }
 
     /**

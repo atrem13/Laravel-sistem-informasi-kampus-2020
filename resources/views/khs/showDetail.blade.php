@@ -1,19 +1,19 @@
-@extends('layout.layout')
-@section('title')
-    index khs detail
+@extends('layout.template')
+@section('header')
+<div class="card-header">
+    <p class="card-title">
+        <a href="{{route('khs.index')}}" class="btn btn-sm mr-3 btn-secondary"><span class="fa fa-arrow-left"></span></a>
+        Detail KHS
+    </p>
+</div>
 @endsection
-@section('content')
-    <div class="row">
-        <div class="col-sm-6">
-            <a href="{{route('khs.index')}}" class="btn btn-secondary">back</a>
-        </div>
-        <div class="col-sm-3 offset-3">
-            <form action="{{route('khs.index')}}" class="form-inline" method="get">
-                <input type="text" name="search" class="form-control">
-                <button type="submit" class="btn btn-primary">Cari</button>
-            </form>
-        </div>
+@section('table')
+<div class="row">
+    <div class="col-sm-8 offset-2">
+      
     </div>
+</div>
+    
     <table class="table-striped table">
         <thead>
             <tr>

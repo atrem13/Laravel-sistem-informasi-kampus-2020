@@ -71,7 +71,7 @@ class RuanganController extends Controller
     public function edit(Ruangan $ruangan)
     {
         $ruangan = Ruangan::findOrfail($ruangan)->first();
-        return view('ruangan.show', compact('ruangan'));
+        return view('ruangan.edit', compact('ruangan'));
     }
 
     /**
