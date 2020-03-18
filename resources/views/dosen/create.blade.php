@@ -18,7 +18,7 @@
                 @csrf
                 <div class="form-group">
                     <label for="">Nama</label>
-                    <input type="text" class="form-control" name="nama">
+                    <input type="text" class="form-control" name="nama" value="{{old('nama')}}">
                     @error('nama')
                         <span class="btn btn-sm btn-danger mt-2">
                             <strong>{{ $message }}</strong>
@@ -27,7 +27,7 @@
                 </div>
                 <div class="form-group">
                     <label for="">NIDN</label>
-                    <input type="text" class="form-control" name="nidn">
+                    <input type="text" class="form-control" name="nidn" value="{{old('nidn')}}">
                     @error('nidn')
                         <span class="btn btn-sm btn-danger mt-2">
                             <strong>{{ $message }}</strong>
@@ -36,7 +36,7 @@
                 </div>
                 <div class="form-group">
                     <label for="">Nomor Telepon</label>
-                    <input type="text" class="form-control" name="notelp">
+                    <input type="text" class="form-control" name="notelp" value="{{old('notelp')}}">
                     @error('notelp')
                         <span class="btn btn-sm btn-danger mt-2">
                             <strong>{{ $message }}</strong>
@@ -45,7 +45,7 @@
                 </div>
                 <div class="form-group">
                     <label for="">Alamat</label>
-                    <textarea class="form-control" name="alamat"></textarea>
+                    <textarea class="form-control" name="alamat">{{old('alamat')}}</textarea>
                     @error('alamat')
                         <span class="btn btn-sm btn-danger mt-2">
                             <strong>{{ $message }}</strong>

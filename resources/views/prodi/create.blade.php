@@ -22,7 +22,7 @@
             @csrf
             <div class="form-group">
                 <label for="">Nama</label>
-                <input type="text" name="nama" class="form-control">
+                <input type="text" name="nama" class="form-control" value="{{old('nama')}}">
                 @error('nama')
                     <span class="btn btn-sm btn-danger mt-2">
                         <strong>{{ $message }}</strong>

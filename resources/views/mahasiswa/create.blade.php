@@ -31,7 +31,7 @@
             </div>
             <div class="form-group">
                 <label for="">Nama</label>
-                <input type="text" class="form-control" name="nama">
+                <input type="text" class="form-control" name="nama" value="{{old('nama')}}">
                 @error('nama')
                     <span class="btn btn-sm btn-danger mt-2">
                         <strong>{{ $message }}</strong>
@@ -40,7 +40,7 @@
             </div>
             <div class="form-group">
                 <label for="">Prodi</label>
-                <select name="prodi_id" id="" class="form-control">
+                <select name="prodi_id" id="" class="form-control" value="{{old('prodi_id')}}">
                     <option value="">-pilih-</option>
                     @foreach ($prodis as $prodi)
                         <option value="{{$prodi->id}}">{{$prodi->nama}}</option>
@@ -54,7 +54,7 @@
             </div>
             <div class="form-group">
                 <label for="">Angkatan</label>
-                <input type="text" class="form-control" name="angkatan">
+                <input type="text" class="form-control" name="angkatan" value="{{old('nama')}}">
                 @error('angkatan')
                     <span class="btn btn-sm btn-danger mt-2">
                         <strong>{{ $message }}</strong>

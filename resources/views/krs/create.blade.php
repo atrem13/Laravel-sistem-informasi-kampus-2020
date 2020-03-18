@@ -22,7 +22,7 @@
             @csrf
             <div class="form-group">
                 <label for="">Mahasiswa</label>
-                <select name="mahasiswa_id" id="" class="form-control">
+                <select name="mahasiswa_id" id="" class="form-control" value="{{old('mahasiswa_id')}}">
                     <option value="">-pilih-</option>
                     @foreach ($mahasiswas as $mahasiswa)
                         <option value="{{$mahasiswa->id}}">{{$mahasiswa->nama}}</option>
@@ -36,7 +36,7 @@
             </div>
             <div class="form-group">
                 <label for="">Semester</label>
-                <input type="text" class="form-control" name="semester">
+                <input type="text" class="form-control" name="semester" value="{{old('semester')}}">
                 @error('semester')
                     <span class="btn btn-sm btn-danger mt-2">
                         <strong>{{ $message }}</strong>

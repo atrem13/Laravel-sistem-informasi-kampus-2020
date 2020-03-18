@@ -21,7 +21,7 @@
             @csrf
             <div class="form-group">
                 <label for="">Kode</label>
-                <input type="text" class="form-control" name="kode">
+                <input type="text" class="form-control" name="kode" value="{{old('kode')}}">
                 @error('kode')
                     <span class="btn btn-sm btn-danger mt-2">
                         <strong>{{ $message }}</strong>
@@ -30,7 +30,7 @@
             </div>
             <div class="form-group">
                 <label for="">Nama</label>
-                <input type="text" class="form-control" name="nama">
+                <input type="text" class="form-control" name="nama" value="{{old('nama')}}">
                 @error('nama')
                     <span class="btn btn-sm btn-danger mt-2">
                         <strong>{{ $message }}</strong>
