@@ -10,13 +10,13 @@
 @section('table')
 <div class="row">
     <div class="col-sm-8 offset-2">
-        @if ($errors->any())
+        {{-- @if ($errors->any())
             <ul class="alert alert-danger">
                 @foreach ($errors->all() as $error)
                     <li>{{$error}}</li>
                 @endforeach
             </ul>
-        @endif
+        @endif --}}
         {{-- {{dd($krs)}} --}}
         <form action="{{route('krs.update', $krs->id)}}" method="post">
             @csrf
@@ -32,10 +32,20 @@
                             {{$mahasiswa->nama}}</option>
                     @endforeach
                 </select>
+                @error('mahasiswa_id')
+                    <span class="btn btn-sm btn-danger mt-2">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
             </div>
             <div class="form-group">
                 <label for="">Semester</label>
                 <input type="text" class="form-control" name="semester" value="{{$krs->semester}}">
+                @error('semester')
+                    <span class="btn btn-sm btn-danger mt-2">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
             </div>
             <div class="form-group">
                 <label for="">Status</label>
@@ -48,6 +58,11 @@
                             {{$status['nama']}}</option>
                     @endforeach
                 </select>
+                @error('status')
+                    <span class="btn btn-sm btn-danger mt-2">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
             </div>
             <div class="col-sm-12 text-right">
                 <button type="submit" class="btn btn-success">Update</button>

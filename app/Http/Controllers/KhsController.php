@@ -32,6 +32,10 @@ class KhsController extends Controller
         // $krs_id = Krs::select('id')->where('mahasiswa_id', $request->mahasiswa_id)
         //                 ->where('semester', $request->semester)
         //                 ->first();
+        // $data = $this->validate($request, [
+        //     'krs_id'=>'required'
+        // ]);
+        // dd($data);
         $khs_id = Khs::create(['krs_id'=>$request->krs_id])->id;
         // dd($khs_id);
         $krsDetails = KrsDetail::select('id')->where('krs_id', $request->krs_id)->get();

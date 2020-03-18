@@ -10,14 +10,14 @@
 @section('table')
 <div class="row">
     <div class="col-sm-8 offset-2">
-        @if ($errors->any())
+        {{-- @if ($errors->any())
             <ul class="alert alert-danger">
                 @foreach ($errors->all() as $error)
                     <li>{{$error}}</li>
                 @endforeach
             </ul>
-        @endif
-        
+        @endif --}}
+
         <form action="{{route('krs.store')}}" method="POST">
             @csrf
             <div class="form-group">
@@ -28,10 +28,20 @@
                         <option value="{{$mahasiswa->id}}">{{$mahasiswa->nama}}</option>
                     @endforeach
                 </select>
+                @error('mahasiswa_id')
+                    <span class="btn btn-sm btn-danger mt-2">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
             </div>
             <div class="form-group">
                 <label for="">Semester</label>
                 <input type="text" class="form-control" name="semester">
+                @error('semester')
+                    <span class="btn btn-sm btn-danger mt-2">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
             </div>
             {{-- <div class="form-group">
                 <label for="">Status</label>

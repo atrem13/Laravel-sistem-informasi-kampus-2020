@@ -26,7 +26,8 @@ class dosenStoreRequest extends FormRequest
         return [
             'nama'=>'required',
             'notelp'=>'numeric',
-            'nidn'=> 'required|unique:dosens,nidn, ' . $this->segment(2)
+            'nidn'=> 'required|unique:dosens,nidn, ' . $this->segment(2),
+            'alamat'=>'nullable'
         ];
     }
 
@@ -37,7 +38,7 @@ class dosenStoreRequest extends FormRequest
             'nama.required'=>'nama harus diisi',
             'nidn.required'=>'nidn harus diisi',
             'nidn.unique'=>'nidn sudah ada',
-            'notelp.numeric'=>'notelp harus angka'
+            'notelp.numeric'=>'notelp harus angka',
         ];
     }
 }

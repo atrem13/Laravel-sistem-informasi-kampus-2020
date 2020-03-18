@@ -10,13 +10,13 @@
 @section('table')
 <div class="row">
     <div class="col-sm-8 offset-2">
-        @if ($errors->any())
+        {{-- @if ($errors->any())
             <ul class="alert alert-danger">
                 @foreach ($errors->all() as $error)
                     <li>{{$error}}</li>
                 @endforeach
             </ul>
-        @endif
+        @endif --}}
         <form action="{{route('jadwal-kuliah.store')}}" method="post">
             @csrf
             <div class="form-group">
@@ -27,6 +27,11 @@
                         <option value="{{$hari->id}}">{{$hari->nama}}</option>
                     @endforeach
                 </select>
+                @error('hari_id')
+                    <span class="btn btn-sm btn-danger mt-2">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
             </div>
             <div class="form-group">
                 <label for="">Matakuliah</label>
@@ -36,6 +41,11 @@
                         <option value="{{$matakuliah->id}}">{{$matakuliah->nama}}</option>
                     @endforeach
                 </select>
+                @error('matakuliah_id')
+                    <span class="btn btn-sm btn-danger mt-2">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
             </div>
             <div class="form-group">
                 <label for="">Dosen Pengajar</label>
@@ -45,6 +55,11 @@
                         <option value="{{$dosen->id}}">{{$dosen->nama}}</option>
                     @endforeach
                 </select>
+                @error('dosen_id')
+                    <span class="btn btn-sm btn-danger mt-2">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
             </div>
             <div class="form-group">
                 <label for="">Ruangan</label>
@@ -54,22 +69,47 @@
                         <option value="{{$ruangan->id}}">{{$ruangan->nama}}</option>
                     @endforeach
                 </select>
+                @error('ruangan_id')
+                    <span class="btn btn-sm btn-danger mt-2">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
             </div>
             <div class="form-group">
                 <label for="">Semester</label>
                 <input type="number" class="form-control" name="semester">
+                @error('semester')
+                    <span class="btn btn-sm btn-danger mt-2">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
             </div>
             <div class="form-group">
                 <label for="">Slot</label>
                 <input type="number" class="form-control" name="slot">
+                @error('slot')
+                    <span class="btn btn-sm btn-danger mt-2">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
             </div>
             <div class="form-group">
                 <label for="">Waktu Mulai</label>
                 <input type="time" class="form-control" name="waktu_mulai">
+                @error('waktu_mulai')
+                    <span class="btn btn-sm btn-danger mt-2">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
             </div>
             <div class="form-group">
                 <label for="">Waktu Selesi</label>
                 <input type="time" class="form-control" name="waktu_selesai">
+                @error('waktu_selesai')
+                    <span class="btn btn-sm btn-danger mt-2">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
             </div>
             <div class="col-sm-12 text-right">
                 <button type="submit" class="btn btn-primary">Add</button>

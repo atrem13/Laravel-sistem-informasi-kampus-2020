@@ -10,18 +10,18 @@
 @section('table')
 <div class="row">
     <div class="col-sm-8 offset-2">
-        @if ($errors->any())
+        {{-- @if ($errors->any())
             <ul class="alert alert-danger">
                 @foreach ($errors->all() as $error)
                     <li>{{$error}}</li>
                 @endforeach
             </ul>
-        @endif
+        @endif --}}
         <form action="{{route('khs.store')}}" method="post">
             @csrf
             <div class="form-group">
                 <label for="">Mahasiswa</label>
-                <select name="krs_id" id="" class="form-control">
+                <select required name="krs_id" id="" class="form-control">
                     <option value="">-pilih-</option>
                     @foreach ($krss as $krs)
                         <option value="{{$krs->id}}">{{$krs->mahasiswa['nama']}} - ({{$krs->semester}})</option>

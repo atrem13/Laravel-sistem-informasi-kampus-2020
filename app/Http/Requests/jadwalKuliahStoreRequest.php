@@ -40,7 +40,7 @@ class jadwalKuliahStoreRequest extends FormRequest
             'hari_id.required'=>'hari harus diisi',
             'matakuliah_id.required'=>'matakuliah harus diisi',
             'dosen_id.required'=>'dosen harus diisi',
-            'ruangan.id_required'=>'ruangan harus diisi',
+            'ruangan_id.required'=>'ruangan harus diisi',
             'waktu_mulai.required'=>'waktu mulai harus diisi',
             'waktu_selesai.required'=>'waktu selesai harus diisi',
             'slot.required'=>'slot harus diisi',

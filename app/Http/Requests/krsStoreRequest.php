@@ -36,7 +36,7 @@ class krsStoreRequest extends FormRequest
             'mahasiswa_id.required'=>'mahasiswa harus diisi',
             'semester.required'=>'semester harus diisi',
             'semester.numeric'=>'semester harus berupa angka',
-            'status.numeric'=>'status harus berupa angka'
+            'status.numeric'=>'status harus dipilih'
         ];
     }
 }

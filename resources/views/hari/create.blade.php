@@ -1,24 +1,29 @@
 @extends('layout.template')
 @section('header')
     <div class="card-header">
-        <p class="card-title"><a href="{{route('hari.index')}}" class="btn btn-secondary bt-sm mr-3"><span class="fa fa-arrow-left "></span></a>Add Hari</p>     
+        <p class="card-title"><a href="{{route('hari.index')}}" class="btn btn-secondary bt-sm mr-3"><span class="fa fa-arrow-left "></span></a>Add Hari</p>
     </div>
 @endsection
 @section('table')
 <div class="row">
     <div class="col-sm-8 offset-2">
-        @if ($errors->any())
+        {{-- @if ($errors->any())
             <ul class="alert alert-danger">
                 @foreach ($errors->all() as $error)
                     <li>{{$error}}</li>
                 @endforeach
             </ul>
-        @endif
+        @endif --}}
         <form action="{{route('hari.store')}}" method="post">
             @csrf
             <div class="form-group">
                 <label for="">Nama</label>
                 <input type="text" name="nama" class="form-control">
+                @error('nama')
+                        <span class="btn btn-sm btn-danger mt-2">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                @enderror
             </div>
             <div class="col-sm-12 text-right">
                 <button class="btn btn-primary" type="submit">Add</button>
