@@ -5,16 +5,35 @@ namespace App\Http\Controllers;
 use App\Models\Dosen;
 use App\Http\Requests\dosenStoreRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class DosenController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct(Request $request)
+    {
+        $this->middleware(function($request, $next){
+
+            if($request->user()){
+                $status = $request->user()->hak_akses_id;
+                if($status == 3 || $status == 5){
+                    return redirect('/')->with('message', 'anda tidak memiliki hak akses ke halaman Dosen');
+                }
+                if($status == 1 || $status == 2 || $status == 4){
+                    return $next($request);
+                }
+            }
+            return redirect()->route('login');
+        });
+    }
     public function index(Request $request)
     {
+
         if($request->has('search')){
             $search = $request->search;
             $dosens = Dosen::where('nama', 'LIKE', '%' . $search . '%')

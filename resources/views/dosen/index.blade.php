@@ -1,7 +1,7 @@
 @extends('layout.template')
 @section('header')
 <div class="card-header">
-    <p class="card-title">{{Route::current()->uri}} Table</p>
+    <p class="card-title">{{Route::current()->uri}} Table </p>
     <div class="card-tools">
         <form action="{{route('dosen.index')}}" class="form-inline" method="get">
             <a href="{{route('dosen.create')}}" class="btn btn-primary btn-sm mr-3"><i class="fa fa-plus"></i></a>

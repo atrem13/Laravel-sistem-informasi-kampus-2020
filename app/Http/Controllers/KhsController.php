@@ -13,6 +13,22 @@ use Illuminate\Http\Request;
 
 class KhsController extends Controller
 {
+    public function __construct(Request $request)
+    {
+        $this->middleware(function($request, $next){
+
+            if($request->user()){
+                $status = $request->user()->hak_akses_id;
+                if($status == 5 || $status == 2){
+                    return redirect('/')->with('message', 'anda tidak memiliki hak akses ke halaman KHS');
+                }
+                if($status == 1 || $status == 3 || $status == 4){
+                    return $next($request);
+                }
+            }
+            return redirect()->route('login');
+        });
+    }
     public function index(Request $request)
     {
         $khss = Khs::paginate(10);

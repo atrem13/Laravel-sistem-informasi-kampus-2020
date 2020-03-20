@@ -14,29 +14,27 @@
 Route::get('/template', function () {
     return view('layout.template');
 })->name('testOI');
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'DashboardController@index')->name('dashboard');
 
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::resource('dosen', 'DosenController');
-Route::resource('mahasiswa','MahasiswaController');
-Route::resource('prodi', 'ProdiController');
-Route::resource('matakuliah', 'MatakuliahController');
-Route::resource('ruangan', 'RuanganController');
-Route::resource('hari', 'HariController');
-Route::resource('jadwal-kuliah', 'JadwalKuliahController');
-Route::resource('krs', 'KrsController');
-Route::group(['prefix' => 'krs-detail'], function() {
+Route::resource('dosen', 'DosenController')->middleware('auth');
+Route::resource('mahasiswa','MahasiswaController')->middleware('auth');
+Route::resource('prodi', 'ProdiController')->middleware('auth');
+Route::resource('matakuliah', 'MatakuliahController')->middleware('auth');
+Route::resource('ruangan', 'RuanganController')->middleware('auth');
+Route::resource('hari', 'HariController')->middleware('auth');
+Route::resource('jadwal-kuliah', 'JadwalKuliahController')->middleware('auth');
+Route::resource('krs', 'KrsController')->middleware('auth');
+Route::group(['prefix' => 'krs-detail', 'middleware'=>'auth'], function() {
     Route::get('/{id}', 'KrsDetailController@create')->name('krs-detail.create');
     Route::post('/store', 'KrsDetailController@store')->name('krs-detail.store');
     Route::delete('/cancel/{id}', 'KrsDetailController@cancel')->name('krs-detail.cancel');
 });
 
-Route::group(['prefix' => 'khs'], function() {
+Route::group(['prefix' => 'khs', 'middleware'=>'auth'], function() {
     Route::get('/', 'KhsController@index')->name('khs.index');
     Route::get('/create','KhsController@create')->name('khs.create');
     Route::post('/store', 'KhsController@store')->name('khs.store');
@@ -45,8 +43,3 @@ Route::group(['prefix' => 'khs'], function() {
     Route::delete('/destroy/{id}', 'KhsController@destroy')->name('khs.destroy');
 });
 
-
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');

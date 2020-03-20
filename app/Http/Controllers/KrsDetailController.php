@@ -13,6 +13,22 @@ use Illuminate\Http\Request;
 
 class KrsDetailController extends Controller
 {
+    public function __construct(Request $request)
+    {
+        $this->middleware(function($request, $next){
+
+            if($request->user()){
+                $status = $request->user()->hak_akses_id;
+                if($status == 2 || $status == 5){
+                    return redirect('/')->with('message', 'anda tidak memiliki hak akses ke halaman KRS Detail');
+                }
+                if($status == 1 || $status == 3 || $status == 4){
+                    return $next($request);
+                }
+            }
+            return redirect()->route('login');
+        });
+    }
     public function create(Request $request, $krs_id)
     {
         $krs_id = $krs_id;

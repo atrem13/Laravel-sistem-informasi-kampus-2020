@@ -42,7 +42,15 @@
         @if (Route::has('login'))
             <div class="text-right links">
                 @auth
-                    <a href="{{ url('/home') }}">Home</a>
+                    <a class="btn btn-sm" href="{{ route('logout') }}"
+                    onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">
+                        {{ __('Logout') }}
+                    </a>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
                 @else
                     <a href="{{ route('login') }}" class="btn btn-sm">Login</a>
                     <span> | </span>
@@ -98,12 +106,13 @@
     @php
         if(Route::currentRouteName() == 'register' || Route::currentRouteName() == 'login'){
             $action = [Route::currentRouteName(),''];
-            $cardHeight = '400px';
             $tableResponsive = '';
         }else{
             $action = Route::currentRouteName();
             $action = explode('.', $action);
-            $cardHeight = '328px';
+            if(Route::currentRouteName() == 'dashboard'){
+                $action = ['Dashboard',''];
+            }
             $tableResponsive = 'table-responsive';
         }
     @endphp
@@ -144,7 +153,7 @@
                 </div>  --}}
                 @yield('header')
                 <!-- /.card-header -->
-                <div class="card-body {{$tableResponsive}} p-0" style="height: {{$cardHeight}};">
+                <div class="card-body {{$tableResponsive}} p-0" style="height: auto;">
                   {{--  <table class="table table-head-fixed text-nowrap">
                     <thead>
                       <tr>
@@ -178,7 +187,7 @@
                 @if ($action[0] == 'krs-detail' && $action[1] == 'create')
                   @yield('header2')
                   <!-- /.card-header -->
-                  <div class="card-body table-responsive p-0" style="height: 328px; overflow:scroll">
+                  <div class="card-body table-responsive p-0">
                   @yield('table2')
                   </div>
                   <!-- /.card-body -->

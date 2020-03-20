@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\hariStoreRequest;
 use App\Models\Hari;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HariController extends Controller
 {
@@ -13,6 +15,24 @@ class HariController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct(Request $request)
+    {
+        $this->middleware(function($request, $next){
+
+            if($request->user()){
+                $status = $request->user()->hak_akses_id;
+                if($status == 2 || $status == 3){
+                    return redirect('/')->with('message', 'anda tidak memiliki hak akses ke halaman Hari');
+                }
+                if($status == 1 || $status == 4 || $status == 5){
+                    return $next($request);
+                }
+            }
+            return redirect()->route('login');
+        });
+    }
+
     public function index(Request $request)
     {
         if($request->has('search')){
