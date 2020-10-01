@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Http\Requests\jadwalKuliahStoreRequest;
 use App\Models\Dosen;
 use App\Models\Hari;
 use App\Models\JadwalKuliah;
 use App\Models\Matakuliah;
 use App\Models\Ruangan;
-use Illuminate\Http\Request;
 
 class JadwalKuliahController extends Controller
 {
